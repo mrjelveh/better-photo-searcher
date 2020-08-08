@@ -1,0 +1,36 @@
+<div class="container">
+    <form class="form-container" [formGroup]='formGroup' (submit)="getSearch($event)">
+            <input class="form-input" type="text" formControlName='searchInput' id="searchInput" placeholder="search here...">
+            <select class="form-select" formControlName='oriention' name="oriention" id="oriention">
+                <option value="landscape">landscape</option>
+                <option value="portrait">portrait</option>
+                <option value="squarish">squarish</option>
+            </select>
+            <select class="form-select" formControlName='orderBy' name="order_by" id="order_by">
+                <option [selected]="true" value="relevant">relevant</option>
+                <option value="latest">latest</option>
+            </select>
+            <select class="form-select" formControlName='colorVariation' name="colorVariation" id="colorVariation">
+                <option value="black_and_white">black_and_white</option>
+                <option value="black">black</option>
+                <option value="yellow">yellow</option>
+                <option value="orange">orange</option>
+                <option value="red">red</option>
+                <option value="purple">purple</option>
+                <option value="magenta">magenta</option>
+                <option value="green">green</option>
+                <option value="teal">teal</option>
+                <option value="blue">blue</option>
+            </select>
+        <button class="form-button" type="submit">search</button>
+    </form>
+</div>
+<section>
+    <ngx-masonry class="container" [options]="masonryOptions">
+        <div ngxMasonryItem class="masonry-item" *ngFor='let item of photo'>
+            <a href="{{item.links.html}}" target="_blank">
+                <img src="{{item.urls.thumb}}" alt="" />
+            </a>
+        </div>
+    </ngx-masonry>
+</section>
